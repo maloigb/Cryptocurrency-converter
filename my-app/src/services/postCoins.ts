@@ -1,9 +1,26 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
-export default {
-    getCoins: async(url) => (await axios.get(url, {
-        params: {
-            limit : 10,
-        }
-    })).data,
+
+interface Coin {
+    name: string,
+    price: {
+        USD: number
+    },
+    availableSupply: number,
+    athMarketCap: {
+        USD: number
+    },
+    category: string,
+    athPrice: {
+        USD: number
+    },
 }
+
+interface GetCoins {
+    data: Coin[]
+}
+const CoinService = {
+    getCoins: <Params>(url: string, params: Params) : Promise<AxiosResponse<GetCoins>> => axios.get(url, { params }),
+};
+
+export default CoinService;
