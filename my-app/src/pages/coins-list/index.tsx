@@ -1,8 +1,7 @@
-import React from 'react'
-import { useCoins } from '@/hooks/useCoins'
+import React from 'react';
+import { useCoins } from '@/hooks/useCoins';
 import styled from 'styled-components';
 import Coin from '@/components/Coin';
-
 
 const Table = styled.table`
     text-decoration: none;
@@ -31,8 +30,8 @@ const Tr = styled.tr`
 
 
 const Index = () => {
-    const { coins, error, isLoading, normalizedCoins } = useCoins();
 
+    const { coins, error, isLoading, normalizedCoins } = useCoins();
 
     return (
         <>
@@ -59,7 +58,7 @@ const Index = () => {
                 </tbody>
             </Table>
         </>
-    )
-}
+    );
+};
 
 export default Index;
