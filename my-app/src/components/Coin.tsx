@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 
 interface Coin {
@@ -9,12 +9,13 @@ interface Coin {
     category: string,
     athPrice: string
     fromAth: string,
-    toAth: string,   
-}
+    toAth: string,
+};
 
 type Props = {
+
     coin: Coin
-}
+};
 
 const Td = styled.td`
     font-size:20px;
@@ -27,23 +28,22 @@ const Td = styled.td`
     `;
 
 const Tr = styled.tr`
+
     &:hover {
         background-color:#2b2b2b;
     }`;
 
 
-const Coin = ({ coin }: Props) => {
-    return (
-        <>
-            <Td>{coin.name}</Td>
-            <Td>{coin.price}</Td>
-            <Td>{coin.availableSupply}</Td>
-            <Td>{coin.athMarketCap}</Td>
-            <Td>{coin.category}</Td>
-            <Td>{coin.fromAth}</Td>
-            <Td>{coin.toAth}</Td>
-        </>
-    )
-}
+const Coin = ({ coin }: Props) => (
+    <>
+        <Td>{coin.name}</Td>
+        <Td>{coin.price}</Td>
+        <Td>{coin.availableSupply}</Td>
+        <Td>{coin.athMarketCap}</Td>
+        <Td>{coin.category}</Td>
+        <Td>{coin.fromAth}</Td>
+        <Td>{coin.toAth}</Td>
+    </>
+);
 
-export default Coin
+export default Coin;
