@@ -92,13 +92,15 @@ const useConverter = () => {
 
     const calculateAmount = (first: Currency, second: Currency) => {
         const firstAmountPrice = first.amount * first.price;
-        const secondAmountPrice = firstAmountPrice / second.price
-        return secondAmountPrice;
+        const secondAmountPrice = firstAmountPrice / second.price;
+        const normalizedSecondAmountPrice = +secondAmountPrice.toFixed(2);
+        
+        return normalizedSecondAmountPrice;
     };
 
     const calculateSecondAmount = (first: Currency, second: Currency) => {
         const amountSecond = calculateAmount(first, second as Currency);
-        const updatedSecond = { ...second, amount: amountSecond } as Currency
+        const updatedSecond = { ...second, amount: amountSecond } as Currency;
         return updatedSecond
     }
     const handleChangeAmount = (amount: number) => {
