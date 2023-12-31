@@ -14,18 +14,18 @@ interface Coin {
     athPrice: string
     fromAth: string,
     toAth: string,
-    
-}
+};
 
 export const useCoins = () => {
+
     const { data, error, isLoading } = useSWR(`https://tstapi.cryptorank.io/v0/coins/`, (url) => postCoins.getCoins(url, {
-        limit : LIMIT_COINS,
+        limit: LIMIT_COINS,
     }));
 
     const normalizedCoins: Coin[] = useMemo(() => {
         const coins = data?.data?.data || [];
-        
-        return coins.map((coin)  => {
+
+        return coins.map((coin) => {
             const price = `$ ${Math.round(coin.price.USD)}`;
             const athMarketCap = `${coin.athMarketCap.USD}`;
             const fromAth = `${calculateAthState(coin.athPrice.USD, coin.price.USD).fromAth} %`;
@@ -39,13 +39,14 @@ export const useCoins = () => {
                 fromAth,
                 toAth,
                 athPrice
-            }
-        })}, [data]);
+            };
+        });
+    }, [data]);
 
     return {
         coins: normalizedCoins,
         isLoading,
         error,
-        normalizedCoins
+        normalizedCoins,
     };
 };
