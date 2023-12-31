@@ -1,9 +1,12 @@
 
-export const calculateAthState = (ath : number, currentPrice : number) => {
+export const calculateAthState = (ath : number = 0, currentPrice : number = 0) => {
 
-    const fromAth = ((currentPrice - ath) / ath) * 100;
+    const athDivider = ath || 1
+    const currentPriceDivier = currentPrice || 1
 
-    const toAth = ((ath - currentPrice) / currentPrice) * 100;
+    const fromAth = ((currentPrice - ath) / athDivider) * 100;
+
+    const toAth = ((ath - currentPrice) / currentPriceDivier) * 100;
 
     const roundedFromAth = parseFloat(fromAth.toFixed(2));
     const roundedToAth = parseFloat(toAth.toFixed(2));
@@ -11,6 +14,8 @@ export const calculateAthState = (ath : number, currentPrice : number) => {
     return {
         fromAth: roundedFromAth,
         toAth: roundedToAth,
-    }
-}
+    };
+};
+
+
 
